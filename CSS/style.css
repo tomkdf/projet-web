@@ -1,92 +1,84 @@
-/* style.css */
-
-* {
-  box-sizing: border-box;
-}
-
 body {
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  margin: 0;
-  padding: 20px;
-  background: #fff;
-  color: #000;
+    background-color: 	#3C425A;
 }
 
 header {
-  margin-bottom: 30px;
+    display: flex;
+    align-items: center;         /* Aligne verticalement l'image et le texte */
+    justify-content: space-between; /* Espace entre le logo et le menu */
+    padding: 20px;
+}
+.logo {
+    height: 100px; /* Ajuste selon la taille souhaitée */
 }
 
-header h1 {
-  font-size: 32px;
-  margin-bottom: 10px;
-}
+.menu {
+    display: flex;
+    gap: 200px; /* Espace entre les éléments du menu */
 
-nav ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 20px;
 }
-
-nav ul li a {
-  text-decoration: none;
-  color: #007BFF;
-  font-weight: 600;
-}
-
-nav ul li a[aria-current="page"] {
-  font-weight: 700;
-  color: #0056b3;
-}
-
-main section h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-form div {
-  margin-bottom: 15px;
-}
-
-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: 600;
-}
-
-input[type="text"],
-input[type="number"] {
-  width: 100%;
-  padding: 8px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-button[type="submit"],
-button[type="reset"] {
-  padding: 10px 20px;
-  font-size: 14px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-right: 10px;
-}
-
-button[type="submit"] {
-  background-color: #28a745;
-  color: white;
-}
-
-button[type="reset"] {
-  background-color: #dc3545;
-  color: white;
+.menu span {
+    color: 	#F3EFDB;
+    font-size: 30px;
+    cursor: pointer;
+    font-family: 'Quicksand', sans-serif;
 }
 
 footer {
+  display: flex;
+  font-family: 'Quicksand', sans-serif;
+  color: 	#F3EFDB;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+  padding: 0 100px; 
+}
+
+.footer-left,
+.footer-right{
+  display: flex;
+  flex-direction: column;
+  flex:1;
+}
+
+.footer-right{
+  text-align: right;
+  align-items: flex-end;
+}
+
+footer a{
+  color: #F3EFDB;
+}
+
+.Projet{
+  font-family: 'Playfair Display', serif;
+  font-size: 50px;
+  color:#F3EFDB;
+  font-weight: bold;
+  max-width:800px
+}
+
+.Description{
+  font-family: 'Playfair Display', serif;
+  font-size:20px;
+  color:#F3EFDB;
+  max-width: 800px;
+  line-height: 1.6;
+  white-space: normal;
   margin-top: 40px;
-  text-align: center;
-  color: #666;
-  font-size: 12px;
+  margin-bottom: 20px;
+}
+
+.image_bateau{
+  float:right;
+  margin-left:20px;
+  margin-right: 50px;
+  max-width: 600px;
+  margin-top: 20px; 
+  height: auto;
+}
+
+.contenu{
+  margin-left : 200px;
+  overflow:auto;
 }
