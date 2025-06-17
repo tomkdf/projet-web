@@ -88,16 +88,29 @@ footer a{
     gap: 50px;
     margin: 20px 100px;
     align-items: flex-start;
+    justify-content: center;
 }
 
 .add-boat-form-section {
-    max-width: 1400px;  /* ou 100% si tu veux */
-    margin-bottom: 40px;
+    max-width: 1400px;
     width: 100%;
+    padding: 30px;
+    margin-bottom: 40px;
+    background: #56638E;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    color: #F3EFDB;
+}
+
+.add-boat-form-section h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
 }
 
 .add-boat-form-section form div {
     margin-bottom: 20px;
+    text-align: left;
 }
 
 .add-boat-form-section label {
@@ -106,7 +119,8 @@ footer a{
     font-size: 20px;
 }
 
-.add-boat-form-section input {
+.add-boat-form-section input,
+.add-boat-form-section select {
     width: 100%;
     padding: 15px;
     font-size: 18px;
@@ -116,14 +130,22 @@ footer a{
     color: #3C425A;
     box-sizing: border-box;
     margin-bottom: 20px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
 
+.add-boat-form-section select:focus,
+.add-boat-form-section input:focus {
+    outline: 2px solid #56638E;
 }
 
 .add-boat-form-section button {
     padding: 15px 30px;
     font-size: 20px;
     color: #F3EFDB;
-    background: #56638E;
+    background: #6D79A1;
     border: none;
     border-radius: 8px;
     margin-bottom: 10px;
@@ -132,15 +154,15 @@ footer a{
 }
 
 .add-boat-form-section button:hover {
-    background: #6D79A1;
+    background: #56638E;
 }
 
 .add-boat-image {
-  float:right;
-  margin-left:20px;
-  margin-right: 50px;
-  max-width: 800px;
-  margin-top: 20px; 
-  height: auto;
+    float: right;
+    margin-left: 20px;
+    margin-right: 50px;
+    max-width: 800px;
+    margin-top: 20px;
+    height: auto;
 }
 
