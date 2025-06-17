@@ -1,10 +1,15 @@
 <?php
-require_once('db.php'); // inclut la fonction dbConnect()
 
+// Inclusion du fichier contenant la fonction de connexion à la base de données
+require_once('db.php');
+
+// Vérifie que la requête est bien de type POST (soumission d'un formulaire)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Connexion à la base de données via la fonction dbConnect()
     $db = dbConnect();
 
-    // Récupération sécurisée des données du formulaire
+    // Récupération des données du formulaire avec l'opérateur de coalescence nulle (??)
+    // Cela permet de définir les variables à null si les champs ne sont pas présents dans la requête POST
     $MMSI = $_POST['MMSI'] ?? null;
     $ship_name = $_POST['ship_name'] ?? null;
     $latitude = $_POST['latitude'] ?? null;
@@ -19,33 +24,53 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $BaseDateTime = $_POST['BaseDateTime'] ?? null;
 
     try {
+        // On vérifie si un navire avec ce MMSI existe déjà dans la table Navire
+        $check = $db->prepare('SELECT COUNT(*) FROM Navire WHERE MMSI = :MMSI');
+        $check->execute([':MMSI' => $MMSI]);
+        $exists = $check->fetchColumn(); // Renvoie 1 si trouvé, 0 sinon
+
+        // Si le navire n'existe pas encore, on l’insère dans la table Navire
+        if (!$exists) {
+            $stmt = $db->prepare('
+                INSERT INTO Navire (MMSI, VesselName, Length, Width, Draft)
+                VALUES (:MMSI, :VesselName, :Length, :Width, :Draft)
+            ');
+             // Exécution de la requête avec liaison des paramètres nommés
+            $stmt->execute([
+                ':MMSI' => $MMSI,
+                ':VesselName' => $ship_name,
+                ':Length' => $length,
+                ':Width' => $width,
+                ':Draft' => $draught,
+            ]);
+        }
+
+        // Insertion d'une nouvelle position dans la table Position, qu'on insère toujours
         $stmt = $db->prepare('
-            INSERT INTO bateau 
-            (MMSI, VesselName, LAT, LON, SOG, COG, Heading, Status, Length, Width, Draft, BaseDateTime) 
+            INSERT INTO Position 
+                (LAT, LON, SOG, COG, Heading, BaseDateTime, MMSI, Status) 
             VALUES 
-            (:MMSI, :ship_name, :latitude, :longitude, :SOG, :COG, :heading, :status, :length, :width, :draught, :BaseDateTime)
+                (:latitude, :longitude, :SOG, :COG, :heading, :BaseDateTime, :MMSI, :status)
         ');
 
+        // Exécution de l'insertion des coordonnées et du statut du navire
         $stmt->execute([
-            ':MMSI' => $MMSI,
-            ':ship_name' => $ship_name,
-            ':latitude' => $latitude,
-            ':longitude' => $longitude,
-            ':SOG' => $SOG,
-            ':COG' => $COG,
-            ':heading' => $heading,
-            ':status' => $status,
-            ':length' => $length,
-            ':width' => $width,
-            ':draught' => $draught,
+            ':latitude'     => $latitude,
+            ':longitude'    => $longitude,
+            ':SOG'          => $SOG,
+            ':COG'          => $COG,
+            ':heading'      => $heading,
             ':BaseDateTime' => $BaseDateTime,
+            ':MMSI'         => $MMSI,
+            ':status'       => $status,
         ]);
-
-        echo "Bateau ajouté avec succès.";
+        // Message de succès envoyé au client si tout s’est bien passé
+        echo "Position ajoutée avec succès.";
     } catch (PDOException $e) {
+        // Si une erreur SQL survient, on renvoie un code HTTP 500 (erreur serveur)
+        // et on affiche un message avec les détails de l'erreur
+        http_response_code(500);
         echo "Erreur lors de l'ajout : " . $e->getMessage();
     }
-} else {
-    echo "Accès interdit.";
 }
 ?>
