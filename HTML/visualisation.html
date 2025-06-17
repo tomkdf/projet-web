@@ -2,18 +2,19 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8">
-        <title>Fonctionnalité 3</title>
-        <link rel="stylesheet" href="css/Fonctionnalité 3.css">
+        <title>Visualisation des données</title>
+        <link rel="stylesheet" href="css/style.css">
         <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Playfair+Display&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     </head>
     <body>
         <header>
-            <img src="images/isen.png" class="logo">
+            <img src="img/isen.png" class="logo">
             <div class="menu">
-            <span class="accueil">Accueil</span>
-            <span class="ajout_bateau">Ajouter un bateau</span>
-            <span class="visu_bateau">Visualisation des bateaux</span>
+            <a class="accueil" href="accueil.html">Accueil</a>
+            <a class="ajout_bateau" href="ajout-donnees.html">Ajouter un bateau</a>
+            <a class="visu_bateau" href="visualisation.html">Visualisation des bateaux</a>
             </div>
         </header>
     <br><hr>
@@ -42,12 +43,19 @@
         </section>
 
         <section class="map-section">
-        <h3>Carte des navires</h3>
-        <div id="map"></div>
+        <h3>Carte des Navires</h3>
+        <div id="leaflet-map" style="width:100%;height:600px;"></div>
         </section>
     </main>
 
-
+    <section class="prediction-buttons">
+    <h3>Outils d'analyse</h3>
+    <div class="btn-container">
+        <button onclick="predictTrajectoire()" href="prediction-trajectoire.html">Prédiction des Trajectoires</button>
+        <button onclick="clusteringTrajectoires()" href="prediction-clustering.html">Clustering des Trajectoires</button>
+        <button onclick="predictTypeVaisseau()" href="prediction-type.html">Prédiction du Type de Navire</button>
+    </div>
+    </section>
     <br><hr>
     <footer> 
         <div class="footer-left">
@@ -58,6 +66,6 @@
         <p><a href="https://isen-ouest.fr/">Isen Yncréa Ouest</a></p>
         </div>
     </footer>
-
+    <script src="js/visualisation.js"></script>
     </body>
 </html>
