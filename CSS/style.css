@@ -83,6 +83,13 @@ footer a{
   margin-left : 200px;
   overflow:auto;
 }
+.pred-type{
+  font-family: 'Playfair Display', serif;
+  font-size: 50px;
+  color:#F3EFDB;
+  font-weight: bold;
+  max-width:800px
+}
 .add-boat-content {
     display: flex;
     gap: 50px;
