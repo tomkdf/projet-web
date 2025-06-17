@@ -1,92 +1,119 @@
-/* style.css */
-
-* {
-  box-sizing: border-box;
-}
-
+/* Reset des marges et padding par défaut, définition de la police et des couleurs de base */
 body {
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  margin: 0;
-  padding: 20px;
-  background: #fff;
-  color: #000;
+    margin: 0;
+    padding: 0;
+    background-color: #3C425A;  /* Fond de la page */
+    color: #F3EFDB;              /* Couleur du texte */
+    font-family: sans-serif;
 }
 
+/* Styles de l'en-tête */
 header {
-  margin-bottom: 30px;
+    display: flex;               /* Utilisation de flexbox */
+    align-items: center;         /* Alignement vertical centré */
+    justify-content: space-between;  /* Espace distribué de chaque côté */
+    padding: 20px;
+    background-color: #2C3045;   /* Fond de l'en-tête */
+    border-bottom: 4px solid #F3EFDB;  /* Barre sous l'en-tête */
 }
 
-header h1 {
-  font-size: 32px;
-  margin-bottom: 10px;
+header img {
+    height: 100px;               /* Logo ISEN de 100px de hauteur */
+    vertical-align: middle;
+    margin-right: 15px;
 }
 
-nav ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 20px;
+header ul {
+    list-style: none;  /* Pas de puces */
+    margin: 0;
+    padding: 0;
+    display: flex;     /* Alignement horizontal des menus */
+    gap: 50px;          /* Espace de 50px entre chaque élément */
 }
 
-nav ul li a {
-  text-decoration: none;
-  color: #007BFF;
-  font-weight: 600;
+header ul li a {
+    color: #F3EFDB;      /* Couleur des liens */
+    font-size: 30px;
+    text-decoration: none;
+    font-family: 'Quicksand', sans-serif;
+    transition: color 0.3s ease-in-out;  /* Transition douce lorsque la couleur change */
 }
 
-nav ul li a[aria-current="page"] {
-  font-weight: 700;
-  color: #0056b3;
+header ul li a:hover {
+    color: #F9D976;      /* Couleur des liens lorsque survolés */
 }
 
-main section h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
+/* Styles de la section principale */
+main {
+    padding: 50px 200px;  /* Marge intérieure */
+}
+
+h2 {
+    color: #F9D976;      /* Couleur du titre */
+    font-size: 40px;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #F9D976;  /* Soulignement */
+    padding-bottom: 10px;
+}
+
+/* Styles du formulaire d'ajout d'un bateau */
+form {
+    background: #2C3045;   /* Fond du formulaire */
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px #0000005c;   /* Ombre portée */
+    max-width: 600px;       /* Largeur maximum */
 }
 
 form div {
-  margin-bottom: 15px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;   /* Chaque label/input l'un sous l'autre */
 }
 
-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: 600;
+form label {
+    margin-bottom: 10px;
+    font-size: 18px;
 }
 
-input[type="text"],
-input[type="number"] {
-  width: 100%;
-  padding: 8px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+form input {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    background: #F3EFDB;  /* Fond de l'input */
+    color: #2C3045;        /* Couleur du texte */
+    outline: none;
+    transition: box-shadow 0.3s ease-in-out;
 }
 
-button[type="submit"],
-button[type="reset"] {
-  padding: 10px 20px;
-  font-size: 14px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-right: 10px;
+form input:focus {
+    box-shadow: 0 0 10px #F9D976;   /* Halo lorsque l'input est actif */
 }
 
-button[type="submit"] {
-  background-color: #28a745;
-  color: white;
+form button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    font-size: 18px;
+    background: #F9D976;
+    color: #2C3045;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
 }
 
-button[type="reset"] {
-  background-color: #dc3545;
-  color: white;
+form button:hover {
+    background: #ffed9c;   /* Fond plus clair lorsque survolé */
 }
 
+/* Styles du pied de page */
 footer {
-  margin-top: 40px;
-  text-align: center;
-  color: #666;
-  font-size: 12px;
+    padding: 20px 100px;
+    color: #F3EFDB;
+    font-size: 20px;
+    background: #2C3045;
+    border-top: 4px solid #F9D976;
+    text-align: center;
 }
