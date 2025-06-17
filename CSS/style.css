@@ -219,3 +219,28 @@ map {
   border-radius: 12px;
   border: 3px solid #7FB196;
 }
+.prediction-buttons {
+  background-color: #f8f5e4;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 12px;
+  margin: 2rem;
+  box-shadow: 0 4px 8px rgba(60, 66, 90, 0.1);
+}
+
+.btn-container button {
+  margin: 1rem;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #7FB196;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-container button:hover {
+  background-color: #5e927a;
+}
