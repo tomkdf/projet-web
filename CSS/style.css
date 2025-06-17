@@ -25,6 +25,13 @@ header {
     text-decoration: none;
 }
 
+.menu span {
+    color: 	#F3EFDB;
+    font-size: 30px;
+    cursor: pointer;
+    font-family: 'Quicksand', sans-serif;
+}
+
 footer {
   display: flex;
   font-family: 'Quicksand', sans-serif;
