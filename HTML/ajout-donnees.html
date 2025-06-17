@@ -22,54 +22,72 @@
     <div class="add-boat-content">
         <section class="add-boat-form-section">
             <h2>Ajouter un bateau</h2>
-            <form id="ajout-bateau-form">
+            <form id="ajout-bateau-form" action="../PHP/ajout_bateau.php" method="POST">
                 <div>
                     <label for="MMSI">MMSI</label>
-                    <input type="text" id="MMSI" name="MMSI" required />
+                    <input type="text" id="MMSI" name="MMSI" placeholder="Saisir le MMSI" required />
                 </div>
                 <div>
-                    <label for="nom-bateau">Nom du bateau</label>
-                    <input type="text" id="nom-bateau" name="nom-bateau" />
+                    <label for="ship_name">Nom du bateau</label>
+                    <input type="text" id="ship_name" name="ship_name" placeholder="Saisir le nom du bateau" />
                 </div>
                 <div>
                     <label for="latitude">Latitude</label>
-                    <input type="number" id="latitude" name="latitude" step="any" required />
+                    <input type="number" id="latitude" name="latitude" step="any" placeholder="Saisir la latitude" required />
                 </div>
                 <div>
                     <label for="longitude">Longitude</label>
-                    <input type="number" id="longitude" name="longitude" step="any" required />
+                    <input type="number" id="longitude" name="longitude" step="any" placeholder="Saisir la longitude" required />
                 </div>
                 <div>
-                    <label for="SOG">SOG (Speed Over Ground)</label>
-                    <input type="number" id="SOG" name="SOG" step="any" min="0" />
+                    <label for="SOG">Vitesse sur le fond (SOG)</label>
+                    <input type="number" id="SOG" name="SOG" step="any" min="0" placeholder="Saisir la vitesse" />
                 </div>
                 <div>
-                    <label for="COG">COG (Course Over Ground)</label>
-                    <input type="number" id="COG" name="COG" step="any" min="0" max="360" />
+                    <label for="COG">Cap sur le fond (COG)</label>
+                    <input type="number" id="COG" name="COG" step="any" min="0" max="360" placeholder="Saisir le cap réel" />
                 </div>
                 <div>
-                    <label for="heading">Cap</label>
-                    <input type="number" id="heading" name="heading" step="any" min="0" max="360" />
+                    <label for="heading">Cap (heading)</label>
+                    <input type="number" id="heading" name="heading" step="any" min="0" max="360" placeholder="Saisir le cap du bateau" />
                 </div>
                 <div>
-                    <label for="status">Statut</label>
-                    <input type="text" id="status" name="status" />
+                    <label for="status">Statut de la navigation</label>
+                    <select id="status" name="status">
+                        <option value="">Sélectionner un statut</option>
+                        <option value="0">0 - En route sous propulsion</option>
+                        <option value="1">1 - Ancré</option>
+                        <option value="2">2 - Amarré</option>
+                        <option value="3">3 - A l'arrêt</option>
+                        <option value="4">4 - Manoeuvre restreinte</option>
+                        <option value="5">5 - Tirant d'eau restreint</option>
+                        <option value="6">6 - Echoué</option>
+                        <option value="7">7 - A l'arrêt, capacité de manoeuvre</option>
+                        <option value="8">8 - En attente</option>
+                        <option value="9">9 - Pas sous commandement</option>
+                        <option value="10">10 - Réserve</option>
+                        <option value="11">11 - Réserve</option>
+                        <option value="12">12 - Réserve</option>
+                        <option value="13">13 - Réserve</option>
+                        <option value="14">14 - Réserve</option>
+                        <option value="15">15 - Non défini</option>
+                    </select>
                 </div>
                 <div>
-                    <label for="longueur">Longueur (m)</label>
-                    <input type="number" id="longueur" name="longueur" step="0.01" min="0" />
+                    <label for="length">Longueur (m)</label>
+                    <input type="number" id="length" name="length" step="0.01" min="0" placeholder="Saisir la longueur du navire" />
                 </div>
                 <div>
-                    <label for="largeur">Largeur (m)</label>
-                    <input type="number" id="largeur" name="largeur" step="0.01" min="0" />
+                    <label for="width">Largeur (m)</label>
+                    <input type="number" id="width" name="width" step="0.01" min="0" placeholder="Saisir la largeur du navire" />
                 </div>
                 <div>
-                    <label for="tirant-eau">Tirant d'eau (m)</label>
-                    <input type="number" id="tirant-eau" name="tirant-eau" step="0.01" min="0" />
+                    <label for="draught">Tirant d'eau (m)</label>
+                    <input type="number" id="draught" name="draught" step="0.01" min="0" placeholder="Saisir le tirant d'eau" />
                 </div>
                 <div>
                     <label for="BaseDateTime">Horodatage de la donnée</label>
-                    <input type="number" id="BaseDateTime" name="BaseDateTime" min="0" step="0.01" />
+                    <input type="number" id="BaseDateTime" name="BaseDateTime" min="0" step="0.01" placeholder="Saisir la date et l'heure de l'enregistrement" />
                 </div>
                 <div>
                     <button type="submit">Ajouter</button>
@@ -96,4 +114,3 @@
     </footer>
 </body>
 </html>
-
