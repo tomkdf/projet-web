@@ -17,11 +17,12 @@ header {
     gap: 200px; /* Espace entre les éléments du menu */
 
 }
-.menu span {
+.menu a {
     color: 	#F3EFDB;
     font-size: 30px;
     cursor: pointer;
     font-family: 'Quicksand', sans-serif;
+    text-decoration: none;
 }
 
 footer {
