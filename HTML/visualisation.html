@@ -3,14 +3,14 @@
     <head>
         <meta charset="utf-8">
         <title>Visualisation des données</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="../css/style.css">
         <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Playfair+Display&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     </head>
     <body>
         <header>
-            <img src="isen.png" class="logo">
+            <img src="img/isen.png" class="logo">
             <div class="menu">
             <a class="accueil" href="accueil.html">Accueil</a>
             <a class="ajout_bateau" href="ajout-donnees.html">Ajouter un bateau</a>
@@ -21,7 +21,7 @@
 
     <main>
         <section class="tab-section">
-        <h2>Tableau - Données des Navires</h2>
+        <h2 class="titre-section">Tableau - Données des Navires</h2>
         <table id="tableau">
             <thead>
             <tr>
@@ -47,7 +47,7 @@
         </section>
 
         <section class="map-section">
-        <h3>Carte des Navires</h3>
+        <h3 class="titre-section">Carte des Navires</h3>
         <div id="leaflet-map" style="width:100%;height:600px;"></div>
         </section>
     </main>
@@ -70,6 +70,6 @@
         <p><a href="https://isen-ouest.fr/">Isen Yncréa Ouest</a></p>
         </div>
     </footer>
-    <script src="visualisation.js"></script>
+    <script src="../js/visualisation.js"></script>
     </body>
 </html>
