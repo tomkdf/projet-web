@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const tbody = document.querySelector("#tableau tbody");
     const trajets = {};
 
-    fetch('php/visualisation.php')
+    fetch('visualisation.php')
         .then(response => response.json())
         .then(data => {
             data.forEach(bateau => {
