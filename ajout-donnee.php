@@ -43,6 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ':Width' => $width,
                 ':Draft' => $draught,
             ]);
+            echo "Navire ajoutée avec succès.";
         }
 
         // Insertion d'une nouvelle position dans la table Position, qu'on insère toujours
