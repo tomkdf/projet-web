@@ -244,3 +244,8 @@ map {
 .btn-container button:hover {
   background-color: #5e927a;
 }
+td {
+  text-align: center;     /* centre horizontalement */
+  vertical-align: middle; /* centre verticalement */
+  padding: 0.75rem 1rem;  /* un peu d’espace pour la lisibilité */
+}
