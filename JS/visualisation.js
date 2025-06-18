@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const lat = parseFloat(LAT);
                 const lon = parseFloat(LON);
 
-                // Marqueur sur la carte
+                // Marqueur sur la carte (inchangé)
                 const popupContent = `
                     <strong>${VesselName || MMSI}</strong><br>
                     Vitesse : ${SOG} kn<br>
@@ -40,9 +40,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
                 trajets[MMSI].push([lat, lon]);
 
-                // Ligne dans le tableau HTML
+                // Ligne tableau avec bouton radio dans une colonne
                 const tr = document.createElement("tr");
                 tr.innerHTML = `
+                    <td style="text-align:center;">
+                        <input type="radio" name="selectedNavire" value="${MMSI}">
+                    </td>
                     <td>${MMSI}</td>
                     <td>${BaseDateTime}</td>
                     <td>${LAT}</td>
@@ -81,4 +84,39 @@ function clusteringTrajectoires() {
 }
 function predictTypeVaisseau() {
     window.location.href = "prediction-type.html";
+}
+
+function getSelectedMMSI() {
+    const radios = document.querySelectorAll('input[name="selectedNavire"]');
+    for (const radio of radios) {
+        if (radio.checked) return radio.value;
+    }
+    return null;
+}
+
+function predictTrajectoire() {
+    const mmsi = getSelectedMMSI();
+    if (!mmsi) {
+        alert("Veuillez sélectionner un navire !");
+        return;
+    }
+    window.location.href = `prediction-trajectoire.html?mmsi=${mmsi}`;
+}
+
+function clusteringTrajectoires() {
+    const mmsi = getSelectedMMSI();
+    if (!mmsi) {
+        alert("Veuillez sélectionner un navire !");
+        return;
+    }
+    window.location.href = `prediction-clustering.html?mmsi=${mmsi}`;
+}
+
+function predictTypeVaisseau() {
+    const mmsi = getSelectedMMSI();
+    if (!mmsi) {
+        alert("Veuillez sélectionner un navire !");
+        return;
+    }
+    window.location.href = `prediction-type.html?mmsi=${mmsi}`;
 }
