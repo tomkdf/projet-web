@@ -22,7 +22,7 @@
     <div class="add-boat-content">
         <section class="add-boat-form-section">
             <h2>Ajouter un bateau</h2>
-            <form id="ajout-bateau-form" action="ajout-donnee.php" method="POST">
+            <form id="ajout-bateau-form">
                 <div>
                     <label for="MMSI">MMSI</label>
                     <input type="text" id="MMSI" name="MMSI" placeholder="Saisir le MMSI" required />
@@ -47,9 +47,12 @@
                     <label for="COG">Cap sur le fond (COG)</label>
                     <input type="number" id="COG" name="COG" step="any" min="0" max="360" placeholder="Saisir le cap réel" required />
                 </div>
-                <select name="status" id="statusSelect">
-                    <option value="">Chargement...</option>
-                </select>
+                <div>
+                    <label for="statusSelect">Statut</label>
+                    <select name="status" id="statusSelect">
+                        <option value="">Chargement...</option>
+                    </select>
+                </div>
                 <div>
                     <label for="heading">Cap (heading)</label>
                     <input type="number" id="heading" name="heading" step="any" min="0" max="360" placeholder="Saisir le cap du bateau" required />
@@ -80,7 +83,8 @@
 
         <img src="containeur.jpeg" class="add-boat-image">
     </div>
-
+    <script src="getstatus.js" defer></script>
+    <script src="ajout-donnee.js" defer></script>
     <br>
     <hr>
 
@@ -93,6 +97,5 @@
             <p><a href="">Isen Yncréa Ouest</a></p>
         </div>
     </footer>
-    <script src="getstatus.js"></script>
 </body>
 </html>
