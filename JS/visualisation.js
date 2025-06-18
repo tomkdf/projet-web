@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const tbody = document.querySelector("#tableau tbody");
     const trajets = {};
 
-    fetch('visualisation.php')
+    fetch('../php/visualisation.php')
         .then(response => response.json())
         .then(data => {
             data.forEach(bateau => {
@@ -60,16 +60,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     <td>${Draft || "-"}</td>
                 `;
                 tbody.appendChild(tr);
-            });
-
-            // Traçage des lignes de trajectoire
-            Object.values(trajets).forEach(positions => {
-                const color = '#' + Math.floor(Math.random() * 16777215).toString(16);
-                L.polyline(positions, {
-                    color,
-                    weight: 3,
-                    opacity: 0.7
-                }).addTo(map);
             });
         })
         .catch(err => console.error("Erreur lors du chargement des données :", err));
