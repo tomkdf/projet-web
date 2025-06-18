@@ -1,49 +1,100 @@
-<?php
-$host="localhost";
-$dbname="etu0418";
-$user="etu0418";
-$pass="hmwhholp";
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Ajout des données </title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Playfair+Display&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <img src="img/isen.png" class="logo">
+        <div class="menu">
+            <a class="accueil" href="index.html">Accueil</a>
+            <a class="ajout_bateau" >Ajouter un bateau</a>
+            <a class="visu_bateau" href="visualisation.html">Visualisation des bateaux</a>
+        </div>
+    </header>
 
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
-} catch (PDOException $e) {
-    http_response_code(500);
-    echo json_encode(['error' => 'Erreur de connexion à la base de données']);
-    exit;
-}
+    <br>
+    <hr>
 
-// Requête : récupère un bateau
-$sql = "SELECT VesselName, Length, Width, Draft FROM Navires WHERE MMSI = 636017833";
-$stmt = $pdo->query($sql);
-$bateau = $stmt->fetch(PDO::FETCH_ASSOC);
+    <div class="add-boat-content">
+        <section class="add-boat-form-section">
+            <h2>Ajouter un bateau</h2>
+            <form id="ajout-bateau-form">
+                <div>
+                    <label for="MMSI">MMSI</label>
+                    <input type="text" id="MMSI" name="MMSI" placeholder="Saisir le MMSI" required />
+                </div>
+                <div>
+                    <label for="ship_name">Nom du bateau</label>
+                    <input type="text" id="ship_name" name="ship_name" placeholder="Saisir le nom du bateau" required/>
+                </div>
+                <div>
+                    <label for="latitude">Latitude</label>
+                    <input type="number" id="latitude" name="latitude" step="any" placeholder="Saisir la latitude" required />
+                </div>
+                <div>
+                    <label for="longitude">Longitude</label>
+                    <input type="number" id="longitude" name="longitude" step="any" placeholder="Saisir la longitude" required />
+                </div>
+                <div>
+                    <label for="SOG">Vitesse sur le fond (SOG)</label>
+                    <input type="number" id="SOG" name="SOG" step="any" min="0" placeholder="Saisir la vitesse" required/>
+                </div>
+                <div>
+                    <label for="COG">Cap sur le fond (COG)</label>
+                    <input type="number" id="COG" name="COG" step="any" min="0" max="360" placeholder="Saisir le cap réel" required />
+                </div>
+                <div>
+                    <label for="statusSelect">Statut</label>
+                    <select name="status" id="statusSelect">
+                    </select>
+                </div>
+                <div>
+                    <label for="heading">Cap (heading)</label>
+                    <input type="number" id="heading" name="heading" step="any" min="0" max="360" placeholder="Saisir le cap du bateau" required />
+                </div>
+                <div>
+                    <label for="length">Longueur (m)</label>
+                    <input type="number" id="length" name="length" step="0.01" min="0" placeholder="Saisir la longueur du navire" required />
+                </div>
+                <div>
+                    <label for="width">Largeur (m)</label>
+                    <input type="number" id="width" name="width" step="0.01" min="0" placeholder="Saisir la largeur du navire" required/>
+                </div>
+                <div>
+                    <label for="draught">Tirant d'eau (m)</label>
+                    <input type="number" id="draught" name="draught" step="0.01" min="0" placeholder="Saisir le tirant d'eau" required/>
+                </div>
+                <div>
+                    <label for="BaseDateTime">Horodatage de la donnée</label>
+                    <input type="datetime-local" id="BaseDateTime" name="BaseDateTime" placeholder="Saisir la date et l'heure de l'enregistrement" required />
+                </div>
+                <div>
+                    <button type="submit">Ajouter</button>
+                    <br>
+                    <button type="reset">Réinitialiser</button>
+                </div>
+            </form>
+        </section>
 
-//Prépare les valeurs à envoyer au script Python 
-$length=escapeshellarg($bateau['Length']);
-$width=escapeshellarg($bateau['Width']);
-$draft=escapeshellarg($bateau['Draft']);
-//Chemin du script python
-$pythonScript=__DIR__.'/../predict_vessel_type.py';
+        <img src="img/containeur.jpeg" class="add-boat-image">
+    </div>
+    <br>
+    <hr>
 
-$command="python3 $pythonScript $length $width $draft 2>&1";
-exec($command, $outputLines, $returnCode);
-
-if ($returnCode !== 0) {
-    echo json_encode(['error' => 'Erreur lors de l\'exécution du script Python', 'details' => $outputLines]);
-    exit;
-}
-
-$output = implode("\n", $outputLines);
-
-//convertir la sortie python en script PHP
-$prediction = json_decode($output, true);
-
-if ($prediction === null) {
-    echo json_encode(['error' => 'Erreur lors du décodage JSON', 'output' => $output]);
-    exit;
-}
-
-//Fusionner les résultats
-$resultat=array_merge($bateau,$prediction);
-// Retourne les données en JSON
-header('Content-Type: application/json');
-echo json_encode($resultat);
+    <footer> 
+        <div class="footer-left">
+            <p> Projet A3 - Partie Développement Web - 2024</p>
+        </div>
+        <div class="footer-right">
+            <p>© ISEN Yncréa Ouest - A3</p>
+            <p><a href="">Isen Yncréa Ouest</a></p>
+        </div>
+    </footer>
+<script src="js/ajout_donnee.js" defer></script>
+<script src="js/getstatus.js" defer></script>
+</body>
+</html>
