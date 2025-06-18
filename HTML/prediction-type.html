@@ -2,7 +2,7 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8">
-        <title>Accueil</title>
+        <title>Prédiction du type</title>
         <link rel="stylesheet" href="css/style.css">
         <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Playfair+Display&display=swap" rel="stylesheet">
     </head>
@@ -16,7 +16,12 @@
             </div>
         </header>
     <br><hr>
-    <span class="pred-type"> Prédiction du type de bateau</span><br>
+    <div class="pred-type">Prédiction du type de bateau :</div>
+    <div class="nom_de_pred">Nom du bateau prédit : <span id="nom"></span></div>
+    <div class="longueur_de_pred">Longueur du bateau prédit : <span id="longueur"></span></div>
+    <div class="largueur_de_pred">Largueur du bateau prédit : <span id="largeur"></span></div>
+    <div class="tirant_de_pred">Tirant d'eau du bateau prédit : <span id="tirant"></span></div>
+    <div class="type_de_prediction">Type de bateau prédit : <span id="type"></span></div>
     <br><hr>
     <footer> 
         <div class="footer-left">
@@ -27,5 +32,6 @@
         <p><a href="https://isen-ouest.fr/">Isen Yncréa Ouest</a></p>
         </div>
     </footer>
+    <script src="js/prediction-type.js"></script>
     </body>
-</html> 
+</html>
