@@ -195,6 +195,16 @@ section {
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
+.titre-section {
+    color: #3C425A; 
+    font-size: 36px; 
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+    text-align: center;
+    margin-top: -30px;
+    margin-bottom: 40px;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
