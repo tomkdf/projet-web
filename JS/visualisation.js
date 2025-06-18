@@ -6,64 +6,79 @@ document.addEventListener("DOMContentLoaded", function () {
         attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
 
-    // Récupération des données PHP
-    fetch('visualisation.php') // Assure-toi que le nom est correct
+    const tbody = document.querySelector("#tableau tbody");
+    const trajets = {};
+
+    fetch('php/visualisation.php')
         .then(response => response.json())
         .then(data => {
-            const trajets = {}; // Pour tracer les lignes
-            const tbody = document.querySelector("#tableau tbody");
-
             data.forEach(bateau => {
-                const { MMSI, LAT, LON, SOG, COG, BaseDateTime, VesselName } = bateau;
-
-                // Préparation des trajectoires par navire
-                if (!trajets[MMSI]) {
-                    trajets[MMSI] = {
-                        name: VesselName || MMSI,
-                        positions: []
-                    };
-                }
+                const {
+                    MMSI, VesselName, LAT, LON, SOG, COG, Heading,
+                    BaseDateTime, Etat, Length, Width, Draft
+                } = bateau;
 
                 const lat = parseFloat(LAT);
                 const lon = parseFloat(LON);
-                trajets[MMSI].positions.push([lat, lon]);
 
-                // Ajout du marqueur à la carte
+                // Marqueur sur la carte
                 const popupContent = `
                     <strong>${VesselName || MMSI}</strong><br>
                     Vitesse : ${SOG} kn<br>
                     Cap : ${COG}°<br>
+                    Cap réel : ${Heading || "-"}°<br>
                     Horodatage : ${BaseDateTime}
                 `;
+
                 L.marker([lat, lon])
                     .bindPopup(popupContent)
                     .addTo(map);
 
-                // Remplissage du tableau HTML
-                const row = document.createElement("tr");
-                row.innerHTML = `
+                // Suivi des positions
+                if (!trajets[MMSI]) {
+                    trajets[MMSI] = [];
+                }
+                trajets[MMSI].push([lat, lon]);
+
+                // Ligne dans le tableau HTML
+                const tr = document.createElement("tr");
+                tr.innerHTML = `
                     <td>${MMSI}</td>
                     <td>${BaseDateTime}</td>
-                    <td>${LAT} / ${LON}</td>
+                    <td>${LAT}</td>
+                    <td>${LON}</td>
                     <td>${SOG}</td>
                     <td>${COG}</td>
-                    <td>${VesselName || MMSI}</td>
-                    <td>-</td> <!-- À remplir si état disponible -->
-                    <td>-</td> <!-- À remplir si dimensions disponibles -->
-                    <td>-</td> <!-- À remplir si tirant d'eau disponible -->
+                    <td>${Heading || "-"}</td>
+                    <td>${VesselName || "-"}</td>
+                    <td>${Etat || "-"}</td>
+                    <td>${Length || "-"}</td>
+                    <td>${Width || "-"}</td>
+                    <td>${Draft || "-"}</td>
                 `;
-                tbody.appendChild(row);
+                tbody.appendChild(tr);
             });
 
-            // Traçage des trajectoires sur la carte
-            for (const mmsi in trajets) {
-                const color = '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0'); // Couleur aléatoire
-                L.polyline(trajets[mmsi].positions, {
+            // Traçage des lignes de trajectoire
+            Object.values(trajets).forEach(positions => {
+                const color = '#' + Math.floor(Math.random() * 16777215).toString(16);
+                L.polyline(positions, {
                     color,
                     weight: 3,
                     opacity: 0.7
                 }).addTo(map);
-            }
+            });
         })
         .catch(err => console.error("Erreur lors du chargement des données :", err));
 });
+
+// Fonctions des boutons
+function predictTrajectoire() {
+    window.location.href = "prediction-trajectoire.html";
+}
+function clusteringTrajectoires() {
+    window.location.href = "prediction-clustering.html";
+}
+function predictTypeVaisseau() {
+    window.location.href = "prediction-type.html";
+}
