@@ -19,7 +19,7 @@ try {
             p.COG,
             p.Heading,
             p.BaseDateTime,
-            e.Status AS Etat
+            e.val AS Etat
         FROM Position p
         JOIN Navire n ON p.MMSI = n.MMSI
         LEFT JOIN Etat e ON p.Status = e.Status
