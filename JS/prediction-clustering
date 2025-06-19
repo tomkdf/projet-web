@@ -1,0 +1,63 @@
+// Lorsque le contenu du DOM est entièrement chargé et prêt
+document.addEventListener("DOMContentLoaded", function () {
+
+  // === 1. Initialisation de la carte ===
+  const map = L.map('map').setView([26.5, -89.5], 5);
+
+  // Ajout de la couche de tuiles OpenStreetMap (fond de carte)
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+  const params = new URLSearchParams(window.location.search);
+  const mmsi = params.get('mmsi');
+  if (!mmsi) {
+    alert("MMSI manquant dans l’URL !");
+    // éventuellement arrêter le script ici
+  }
+
+  // === 2. Récupération des données de clustering via PHP ===
+  fetch(`prediction-clustering.php?mmsi=${mmsi}`)
+    .then(response => {
+      console.log("Réponse reçue:", response);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(navire => {
+      console.log("Données reçues:", navire);
+      // Conversion des coordonnées en float
+      const lat = parseFloat(navire.LAT);
+      const lon = parseFloat(navire.LON);
+      const color = getColor(navire.cluster);
+
+      // Vérifie que les coordonnées sont valides
+      if (!isNaN(lat) && !isNaN(lon)) {
+        // Ajoute un marqueur circulaire coloré
+        L.circleMarker([lat, lon], {
+          radius: 6,
+          fillColor: color,
+          color: '#000',
+          weight: 1,
+          opacity: 1,
+          fillOpacity: 0.8
+        })
+          .addTo(map)
+          .bindPopup(`Cluster: ${navire.cluster}`);
+
+        // Centre la carte sur le point
+        map.setView([lat, lon], 7);
+      } else {
+        console.error("Coordonnées invalides:", navire);
+      }
+    })
+    .catch(err => console.error('Erreur chargement données:', err));
+  
+  // === 3. Fonction utilitaire : attribution d'une couleur selon le cluster ===
+  function getColor(cluster) {
+    const colors = ['red', 'blue', 'green']; // 3 couleurs pour les 3 clusters
+    return colors[cluster % colors.length];
+  }
+
+
+});
