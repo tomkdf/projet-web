@@ -12,9 +12,18 @@ try {
     exit;
 }
 
+if (!isset($_GET['mmsi'])) {
+    // Si le paramètre est absent, on retourne une erreur 400 (Bad Request)
+    http_response_code(400);
+    echo json_encode(['error' => 'Paramètre MMSI manquant']);
+    exit; // Fin du script
+}
+
+$mmsi = $_GET['mmsi']; // Récupération du paramètre MMSI
 // Requête : récupère un bateau
-$sql = "SELECT VesselName, Length, Width, Draft FROM Navires WHERE MMSI = 636017833";
-$stmt = $pdo->query($sql);
+$sql = "SELECT VesselName, Length, Width, Draft FROM Navires WHERE MMSI = :mmsi";
+$stmt = $pdo->prepare($sql);
+$stmt->execute(['mmsi'=> $mmsi]);
 $bateau = $stmt->fetch(PDO::FETCH_ASSOC);
 
 //Prépare les valeurs à envoyer au script Python 
