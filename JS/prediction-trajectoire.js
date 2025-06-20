@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         // Envoi de la requête POST vers PHP
-        fetch('get_last_pos.php', {
+        fetch('prediction-trajectoire.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
