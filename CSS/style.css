@@ -207,7 +207,7 @@ footer a {
 }
 
 /*Visualisation Fonctionnalité 3*/
-/* Style pour tous les liens <a> */
+
 a {
   color: #DF775C;          /* Couleur orange/rouge */
   font-weight: 500;        /* Épaisseur moyenne du texte */
@@ -216,23 +216,31 @@ a {
 /* Style pour toutes les sections <section> */
 section {
   padding: 3rem 2rem;      /* Espace intérieur : 3rem vertical, 2rem horizontal */
-  background-color: #fff;  /* Fond blanc */
+  background-color: #F3EFDB;  /* Fond blanc */
   margin: 2rem;            /* Marge extérieure tout autour */
   border-radius: 12px;     /* Bords arrondis */
   box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Ombre légère portée */
 }
 
-/* Style des tableaux <table> */
-table {
-  width: 100%;             /* Prend toute la largeur de son conteneur */
-  border-collapse: collapse; /* Fusionne les bordures entre cellules */
-  font-size: 0.95rem;      /* Taille de police légèrement plus petite */
-  background-color: #F3EFDB; /* Fond beige clair */
-  border-radius: 8px;      /* Bords arrondis (attention : ne fonctionne pas sur table directement dans tous les navigateurs) */
-  overflow: hidden;        /* Coupe le débordement, utile pour les coins arrondis */
+.titre-section {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #56638E;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-/* Style pour les en-têtes de colonnes <th> */
+
+table {
+  width: 100%;             
+  border-collapse: collapse; 
+  font-size: 0.95rem;      
+  background-color: #F3EFDB; 
+  border-radius: 8px;    
+  overflow: hidden;      
+}
+
 th {
   background-color: #DF775C; /* Fond orange/rouge */
   color: white;             /* Texte blanc */
@@ -293,6 +301,14 @@ td {
   border-radius: 12px;      /* Coins arrondis */
 }
 
+.pred-cluster {
+  font-family: 'Playfair Display', serif; /* Police élégante */
+  font-size: 48px;                        /* Grande taille pour un titre */
+  font-weight: bold;                      /* Texte en gras */
+  color: #F3EFDB;                         /* Couleur claire */
+  text-align: center;                     /* Centré horizontalement */
+  margin: 40px 0;   
+}
 
 .prediction-container {
     background-color: #56638E;  /* bleu/gris sombre */
@@ -314,14 +330,6 @@ td {
     text-align: center;
 }
 
-.pred-cluster {
-  font-family: 'Playfair Display', serif; /* Police élégante */
-  font-size: 48px;                        /* Grande taille pour un titre */
-  font-weight: bold;                      /* Texte en gras */
-  color: #F3EFDB;                         /* Couleur claire */
-  text-align: center;                     /* Centré horizontalement */
-  margin: 40px 0;   
-}
 
 .nom_pred, 
 .position-info p, 
