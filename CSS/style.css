@@ -299,3 +299,105 @@ td {
   margin: 20px 0;           /* Marge verticale */
   border-radius: 12px;      /* Coins arrondis */
 }
+
+
+.prediction-container {
+    background-color: #56638E;  /* bleu/gris sombre */
+    padding: 2rem 3rem;
+    margin: 2rem 100px;
+    border-radius: 12px;
+    color: #F3EFDB;             /* texte clair */
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+    max-width: 600px;
+}
+
+
+.pred-type {
+    font-family: 'Playfair Display', serif;
+    font-size: 50px;
+    color: #F3EFDB;
+    font-weight: bold;
+    max-width: 800px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+
+.nom_de_pred, 
+.position-info p, 
+.prediction-result p,
+.prediction-input label {
+    font-size: 18px;
+    margin: 0.5rem 0;
+}
+
+
+.prediction-input select {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 12px;
+    border: none;
+    background-color: #F3EFDB;
+    color: #3C425A;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: outline 0.3s ease;
+}
+
+.prediction-input select:focus {
+    outline: 2px solid #7FB196; 
+}
+
+
+.position-info,
+.prediction-result,
+.prediction-input {
+    background-color: #3C425A;  
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 6px;
+    border: 1px solid #7FB196;
+}
+
+
+.position-info h2.type_de_prediction,
+.prediction-result h2.type_de_prediction,
+.prediction-input label.type_de_prediction {
+    font-weight: 700;
+    color: #F3EFDB;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+
+.nom_de_pred {
+    text-align: center;
+    font-weight: 600;
+}
+
+
+@media (max-width: 700px) {
+    .prediction-container {
+        margin: 2rem 20px;
+        padding: 1.5rem 1.5rem;
+        max-width: 100%;
+    }
+}
+
+#predictBtn {
+    display: block;
+    margin: 20px auto 0 auto;
+    padding: 12px 25px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 12px;
+    border: none;
+    background-color: #7FB196;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+#predictBtn:hover {
+    background-color: #5e927a;
+}
