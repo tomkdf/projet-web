@@ -14,7 +14,7 @@
     <header>
         <img src="img/isen.png" class="logo" alt="Logo ISEN" />
         <div class="menu">
-            <a class="accueil" href="accueil.html">Accueil</a>
+            <a class="accueil" href="index.html">Accueil</a>
             <a class="ajout_bateau" href="ajout-donnees.html">Ajouter un bateau</a>
             <a class="visu_bateau" href="visualisation.html">Visualisation des bateaux</a>
         </div>
@@ -24,7 +24,7 @@
     <section class="prediction-container">
         <h1 class="pred-type">Prédiction de la trajectoire</h1>
 
-        <p class="nom_de_pred">Nom du bateau prédit : <span id="nom">--</span></p>
+        <p class="nom_pred">Nom du bateau prédit : <span id="nom">--</span></p>
 
         <div class="position-info">
             <h2 class="type_de_prediction">Dernière position enregistrée :</h2>
@@ -33,16 +33,7 @@
         </div>
 
         <div class="prediction-input">
-            <label for="timeMinutes" class="type_de_prediction">Temps en minutes pour prédiction :</label>
-            <select id="timeMinutes">
-                <option value="">--Choisissez un temps--</option>
-                <option value="10">+10 min</option>
-                <option value="15">+15 min</option>
-                <option value="20">+20 min</option>
-                <option value="30">+30 min</option>
-                <option value="60">+60 min</option>
-            </select>
-            <button id="predictBtn">Prédire</button>
+            <label for="timeMinutes" class="type_de_prediction">Temps en minutes pour prédiction : 10 minutes</label>
         </div>
 
         <div class="prediction-result">
