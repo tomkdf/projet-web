@@ -323,12 +323,19 @@ td {
 }
 
 
-.nom_de_pred, 
+.nom_pred, 
 .position-info p, 
 .prediction-result p,
 .prediction-input label {
     font-size: 18px;
     margin: 0.5rem 0;
+}
+
+.nom_de_pred{
+  font-family: 'Playfair Display', serif;
+  font-size:30px;
+  color:#F3EFDB;
+  margin: 20px 50px;
 }
 
 .longueur_de_pred{
@@ -397,7 +404,7 @@ td {
 }
 
 
-.nom_de_pred {
+.nom_pred {
     text-align: center;
     font-weight: 600;
 }
