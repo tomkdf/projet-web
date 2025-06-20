@@ -14,12 +14,11 @@ def main():
         sys.exit(1)
 
     try:
-        # Connexion à la base de données (adapte avec tes infos)
         conn = mysql.connector.connect(
             host="localhost",
-            user="root",
-            password="",  # ou ton mot de passe
-            database="nom_de_ta_bdd"
+            user="etu0314",
+            password="srgjpasb", 
+            database="etu0314"
         )
         cursor = conn.cursor(dictionary=True)
 
