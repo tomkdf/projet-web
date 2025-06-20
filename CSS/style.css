@@ -314,6 +314,14 @@ td {
     text-align: center;
 }
 
+.pred-cluster {
+  font-family: 'Playfair Display', serif; /* Police élégante */
+  font-size: 48px;                        /* Grande taille pour un titre */
+  font-weight: bold;                      /* Texte en gras */
+  color: #F3EFDB;                         /* Couleur claire */
+  text-align: center;                     /* Centré horizontalement */
+  margin: 40px 0;   
+}
 
 .nom_pred, 
 .position-info p, 
