@@ -94,6 +94,7 @@ footer a {
   white-space: normal;                    /* Autorise le retour à la ligne */
   margin-top: 40px;                       /* Marge au-dessus */
   margin-bottom: 20px;                    /* Marge en dessous */
+  text-align: justify; 
 }
 
 /* Style image bateau flottante à droite */
