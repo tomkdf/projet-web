@@ -1,30 +1,43 @@
+/* Couleur de fond de toute la page */
 body {
     background-color: 	#3C425A;
 }
 
+/* Style du header : disposition en flex pour aligner logo et menu */
 header {
     display: flex;
-    align-items: center;         /* Aligne verticalement l'image et le texte */
-    justify-content: space-between; /* Espace entre le logo et le menu */
-    padding: 20px;
+    align-items: center;         /* Centre verticalement l'image (logo) et le texte */
+    justify-content: space-between; /* Espace maximum entre le logo et le menu */
+    padding: 20px;               /* Espace interne autour du contenu du header */
 }
+
+/* Taille du logo (image dans header) */
 .logo {
-    height: 100px; /* Ajuste selon la taille souhaitée */
+    height: 100px; /* Hauteur fixe du logo */
 }
 
+/* Conteneur du menu de navigation */
 .menu {
-    display: flex;
-    gap: 200px; /* Espace entre les éléments du menu */
-
+    display: flex;       /* Affiche les liens en ligne (horizontalement) */
+    gap: 200px;          /* Espace fixe entre chaque lien */
 }
+
+/* Style des liens dans le menu */
 .menu a {
-    color: 	#F3EFDB;
-    font-size: 30px;
-    cursor: pointer;
-    font-family: 'Quicksand', sans-serif;
-    text-decoration: none;
+    color: 	#F3EFDB;                         /* Couleur claire des liens */
+    font-size: 30px;                        /* Taille assez grande du texte */
+    cursor: pointer;                       /* Curseur en forme de main au survol */
+    font-family: 'Quicksand', sans-serif; /* Police moderne et lisible */
+    text-decoration: none;                 /* Pas de soulignement */
 }
 
+/* Style spécifique pour le lien actif (page courante) */
+.menu a.active {
+    pointer-events: none; /* Désactive le clic sur ce lien */
+    cursor: default;      /* Curseur normal (flèche) au survol */
+}
+
+/* Style pour les spans dans le menu (si utilisés) */
 .menu span {
     color: 	#F3EFDB;
     font-size: 30px;
@@ -32,272 +45,257 @@ header {
     font-family: 'Quicksand', sans-serif;
 }
 
+/* Style du footer : disposition en flex */
 footer {
   display: flex;
   font-family: 'Quicksand', sans-serif;
-  color: 	#F3EFDB;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 20px;
-  padding: 0 100px; 
+  color: 	#F3EFDB;                        /* Couleur claire pour le texte */
+  justify-content: space-between;         /* Écarte les éléments à gauche et droite */
+  align-items: center;                    /* Centre verticalement les éléments */
+  font-size: 20px;                        /* Taille de police modérée */
+  padding: 0 100px;                      /* Espace à gauche et à droite */
 }
 
+/* Partie gauche et droite du footer */
 .footer-left,
-.footer-right{
+.footer-right {
   display: flex;
-  flex-direction: column;
-  flex:1;
+  flex-direction: column; /* Organise en colonne (texte ou liens empilés) */
+  flex: 1;                /* Prend un espace égal dans le footer */
 }
 
-.footer-right{
-  text-align: right;
-  align-items: flex-end;
+/* Alignement spécifique pour la partie droite */
+.footer-right {
+  text-align: right;      /* Texte aligné à droite */
+  align-items: flex-end;  /* Aligne les éléments au bord droit */
 }
 
-footer a{
+/* Style des liens dans le footer */
+footer a {
+  color: #F3EFDB;         /* Couleur claire cohérente avec le reste */
+}
+
+/* Style pour un titre ou élément de classe Projet */
+.Projet {
+  font-family: 'Playfair Display', serif; /* Police élégante avec serif */
+  font-size: 50px;                        /* Très grand titre */
+  color: #F3EFDB;                        /* Couleur claire */
+  font-weight: bold;                     /* Texte en gras */
+  max-width: 800px;                      /* Largeur maximale */
+}
+
+/* Style pour une description */
+.Description {
+  font-family: 'Playfair Display', serif; /* Police élégante */
+  font-size: 20px;                         /* Taille de texte lisible */
+  color: #F3EFDB;                         /* Couleur claire */
+  max-width: 800px;                       /* Limite la largeur pour la lisibilité */
+  line-height: 1.6;                       /* Hauteur de ligne pour espacer le texte */
+  white-space: normal;                    /* Autorise le retour à la ligne */
+  margin-top: 40px;                       /* Marge au-dessus */
+  margin-bottom: 20px;                    /* Marge en dessous */
+}
+
+/* Style image bateau flottante à droite */
+.image_bateau {
+  float: right;                          /* Image flottante à droite du texte */
+  margin-left: 20px;                    /* Espace à gauche de l'image */
+  margin-right: 50px;                   /* Espace à droite de l'image */
+  max-width: 800px;                     /* Largeur maximale de l'image */
+  margin-top: 20px;                     /* Marge au-dessus */
+  height: auto;                        /* Hauteur automatique pour garder les proportions */
+}
+
+/* Style du contenu principal */
+.contenu {
+  margin-left: 200px;                   /* Décalage à gauche pour espace ou sidebar */
+  overflow: auto;                      /* Gestion du débordement (scroll si nécessaire) */
+}
+
+/* Style pour un autre grand titre (ex: type de prédiction) */
+.pred-type {
+  font-family: 'Playfair Display', serif;
+  font-size: 50px;
   color: #F3EFDB;
-}
-
-.Projet{
-  font-family: 'Playfair Display', serif;
-  font-size: 50px;
-  color:#F3EFDB;
   font-weight: bold;
-  max-width:800px
-}
-
-.Description{
-  font-family: 'Playfair Display', serif;
-  font-size:20px;
-  color:#F3EFDB;
   max-width: 800px;
-  line-height: 1.6;
-  white-space: normal;
-  margin-top: 40px;
-  margin-bottom: 20px;
 }
-
-.image_bateau{
-  float:right;
-  margin-left:20px;
-  margin-right: 50px;
-  max-width: 800px;
-  margin-top: 20px; 
-  height: auto;
-}
-
-.contenu{
-  margin-left : 200px;
-  overflow:auto;
-}
-.pred-type{
-  font-family: 'Playfair Display', serif;
-  font-size: 50px;
-  color:#F3EFDB;
-  font-weight: bold;
-  max-width:800px
-}
+/* Conteneur principal du contenu pour ajouter un bateau */
 .add-boat-content {
-    display: flex;
-    gap: 50px;
-    margin: 20px 100px;
-    align-items: flex-start;
-    justify-content: center;
+    display: flex;              /* Affichage en ligne flexible */
+    gap: 50px;                 /* Espace entre les éléments enfants */
+    margin: 20px 100px;         /* Marges verticales 20px, horizontales 100px */
+    align-items: flex-start;    /* Aligne les éléments au début verticalement */
+    justify-content: center;    /* Centre les éléments horizontalement */
 }
 
+/* Section du formulaire pour ajouter un bateau */
 .add-boat-form-section {
-    max-width: 1400px;
-    width: 100%;
-    padding: 30px;
-    margin-bottom: 40px;
-    background: #56638E;
-    border-radius: 12px;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
-    text-align: center;
-    color: #F3EFDB;
+    max-width: 1400px;            /* Largeur max du conteneur */
+    width: 100%;                  /* Prend toute la largeur possible */
+    padding: 30px;                /* Espace interne autour du contenu */
+    margin-bottom: 40px;          /* Marge en dessous de la section */
+    background: #56638E;          /* Couleur de fond bleu/gris */
+    border-radius: 12px;          /* Bords arrondis */
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5); /* Ombre portée subtile */
+    text-align: center;           /* Texte centré à l’intérieur */
+    color: #F3EFDB;               /* Couleur claire du texte */
 }
 
+/* Titre h2 dans la section du formulaire */
 .add-boat-form-section h2 {
-    font-size: 32px;
-    margin-bottom: 30px;
+    font-size: 32px;             /* Taille du texte du titre */
+    margin-bottom: 30px;         /* Marge sous le titre */
 }
 
+/* Divisions internes dans le formulaire (chaque groupe champ + label) */
 .add-boat-form-section form div {
-    margin-bottom: 20px;
-    text-align: left;
+    margin-bottom: 20px;         /* Marge en dessous de chaque groupe */
+    text-align: left;            /* Texte aligné à gauche */
 }
 
+/* Style des labels des champs du formulaire */
 .add-boat-form-section label {
-    display: block;
-    margin-bottom: 10px;
-    font-size: 20px;
+    display: block;              /* Force le label sur une ligne à part */
+    margin-bottom: 10px;         /* Espace sous le label */
+    font-size: 20px;             /* Taille de police du label */
 }
 
+/* Style pour les champs input et select */
 .add-boat-form-section input,
 .add-boat-form-section select {
-    width: 100%;
-    padding: 15px;
-    font-size: 18px;
-    border: none;
-    border-radius: 12px;
-    background: #F3EFDB;
-    color: #3C425A;
-    box-sizing: border-box;
-    margin-bottom: 20px;
-    cursor: pointer;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+    width: 100%;                 /* Prend toute la largeur disponible */
+    padding: 15px;               /* Espace interne confortable */
+    font-size: 18px;             /* Taille du texte */
+    border: none;                /* Pas de bordure */
+    border-radius: 12px;         /* Bords arrondis */
+    background: #F3EFDB;         /* Fond clair */
+    color: #3C425A;              /* Couleur sombre du texte */
+    box-sizing: border-box;      /* Inclut padding dans la largeur */
+    margin-bottom: 20px;         /* Espace sous chaque champ */
+    cursor: pointer;             /* Curseur main au survol */
+    -webkit-appearance: none;    /* Suppression apparence par défaut sur Webkit */
+    -moz-appearance: none;       /* Suppression apparence par défaut sur Firefox */
+    appearance: none;            /* Suppression apparence par défaut générale */
 }
 
+/* Style pour le focus sur input et select */
 .add-boat-form-section select:focus,
 .add-boat-form-section input:focus {
-    outline: 2px solid #56638E;
+    outline: 2px solid #56638E; /* Contour bleu/gris visible lors du focus */
 }
 
+/* Style des boutons dans la section */
 .add-boat-form-section button {
-    padding: 15px 30px;
-    font-size: 20px;
-    color: #F3EFDB;
-    background: #6D79A1;
-    border: none;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    transition: background 0.3s ease;
+    padding: 15px 30px;          /* Espace interne large */
+    font-size: 20px;             /* Taille du texte */
+    color: #F3EFDB;              /* Couleur claire du texte */
+    background: #6D79A1;         /* Fond bleu/gris */
+    border: none;                /* Pas de bordure */
+    border-radius: 8px;          /* Bords arrondis */
+    margin-bottom: 10px;         /* Marge en dessous */
+    cursor: pointer;             /* Curseur main */
+    transition: background 0.3s ease; /* Animation sur changement de fond */
 }
 
+/* Changement de couleur du bouton au survol */
 .add-boat-form-section button:hover {
-    background: #56638E;
+    background: #56638E;         /* Couleur plus foncée au hover */
 }
 
+/* Style pour l’image du bateau */
 .add-boat-image {
-    float: right;
-    margin-left: 20px;
-    margin-right: 50px;
-    max-width: 800px;
-    margin-top: 20px;
-    height: auto;
+    float: right;                /* Flotte à droite du texte */
+    margin-left: 20px;           /* Espace à gauche de l’image */
+    margin-right: 50px;          /* Espace à droite de l’image */
+    max-width: 800px;            /* Largeur maximale */
+    margin-top: 20px;            /* Marge au-dessus */
+    height: auto;                /* Hauteur automatique pour garder proportions */
 }
 
 /*Visualisation Fonctionnalité 3*/
-
+/* Style pour tous les liens <a> */
 a {
-  color: #DF775C;
-  font-weight: 500;
+  color: #DF775C;          /* Couleur orange/rouge */
+  font-weight: 500;        /* Épaisseur moyenne du texte */
 }
 
+/* Style pour toutes les sections <section> */
 section {
-  padding: 3rem 2rem;
-  background-color: #F3EFDB;
-  margin: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  padding: 3rem 2rem;      /* Espace intérieur : 3rem vertical, 2rem horizontal */
+  background-color: #fff;  /* Fond blanc */
+  margin: 2rem;            /* Marge extérieure tout autour */
+  border-radius: 12px;     /* Bords arrondis */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Ombre légère portée */
 }
 
-.titre-section {
-    color: #3C425A; 
-    font-size: 36px; 
-    font-family: 'Playfair Display', serif;
-    font-weight: bold;
-    text-align: center;
-    margin-top: -30px;
-    margin-bottom: 40px;
-}
-
+/* Style des tableaux <table> */
 table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.95rem;
-  background-color: #F3EFDB;
-  border-radius: 8px;
-  overflow: hidden;
+  width: 100%;             /* Prend toute la largeur de son conteneur */
+  border-collapse: collapse; /* Fusionne les bordures entre cellules */
+  font-size: 0.95rem;      /* Taille de police légèrement plus petite */
+  background-color: #F3EFDB; /* Fond beige clair */
+  border-radius: 8px;      /* Bords arrondis (attention : ne fonctionne pas sur table directement dans tous les navigateurs) */
+  overflow: hidden;        /* Coupe le débordement, utile pour les coins arrondis */
 }
 
+/* Style pour les en-têtes de colonnes <th> */
 th {
-  background-color: #DF775C;
-  color: #F3EFDB;
-  padding: 1rem;
-  text-align: center;
+  background-color: #DF775C; /* Fond orange/rouge */
+  color: white;             /* Texte blanc */
+  padding: 1rem;            /* Espace intérieur */
+  text-align: center;       /* Centre le texte horizontalement */
 }
 
-
+/* Style pour la balise <map> (rarement utilisée, attention) */
 map {
-  height: 600px;
-  width: 100%;
-  margin-top: 20px;
-  border-radius: 12px;
-  border: 3px solid #7FB196;
+  height: 600px;            /* Hauteur fixe */
+  width: 100%;              /* Largeur pleine */
+  margin-top: 20px;         /* Marge au-dessus */
+  border-radius: 12px;      /* Bords arrondis */
+  border: 3px solid #7FB196; /* Bordure verte */
 }
+
+/* Conteneur des boutons de prédiction */
 .prediction-buttons {
-  background-color: #f8f5e4;
-  padding: 2rem;
-  text-align: center;
-  border-radius: 12px;
-  margin: 2rem;
-  box-shadow: 0 4px 8px rgba(60, 66, 90, 0.1);
+  background-color: #f8f5e4; /* Fond beige clair */
+  padding: 2rem;             /* Espace intérieur */
+  text-align: center;        /* Centre le contenu horizontalement */
+  border-radius: 12px;       /* Bords arrondis */
+  margin: 2rem;              /* Marge tout autour */
+  box-shadow: 0 4px 8px rgba(60, 66, 90, 0.1); /* Ombre portée légère */
 }
+
+/* Style pour tous les boutons dans le conteneur btn-container */
 .btn-container button {
-  margin: 1rem;
-  padding: 1rem 2rem;
-  font-size: 1rem;
-  font-weight: bold;
-  color: #fff;
-  background-color: #7FB196;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+  margin: 1rem;              /* Marge autour des boutons */
+  padding: 1rem 2rem;        /* Espace intérieur */
+  font-size: 1rem;           /* Taille de police */
+  font-weight: bold;         /* Texte en gras */
+  color: #fff;               /* Texte blanc */
+  background-color: #7FB196; /* Fond vert clair */
+  border: none;              /* Pas de bordure */
+  border-radius: 8px;        /* Bords arrondis */
+  cursor: pointer;           /* Curseur pointer au survol */
+  transition: background-color 0.3s; /* Animation transition couleur */
 }
 
+/* Changement de couleur au survol des boutons */
 .btn-container button:hover {
-  background-color: #5e927a;
+  background-color: #5e927a; /* Vert plus foncé */
 }
+
+/* Style pour les cellules de tableau <td> */
 td {
-  text-align: center;     /* centre horizontalement */
-  vertical-align: middle; /* centre verticalement */
-  padding: 0.75rem 1rem;  /* un peu d’espace pour la lisibilité */
-}
-.pred-type{
-  font-family: 'Playfair Display', serif;
-  font-size: 50px;
-  color:#F3EFDB;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 50px; 
+  text-align: center;       /* Centre horizontalement le texte */
+  vertical-align: middle;   /* Centre verticalement le contenu */
+  padding: 0.75rem 1rem;    /* Espace interne */
 }
 
-.nom_de_pred{
-  font-family: 'Playfair Display', serif;
-  font-size:30px;
-  color:#F3EFDB;
-  margin: 20px 50px;
-}
-
-.longueur_de_pred{
-  font-family: 'Playfair Display', serif;
-  font-size:30px;
-  color:#F3EFDB;
-  margin: 20px 50px;
-}
-
-.largueur_de_pred{
-  font-family: 'Playfair Display', serif;
-  font-size:30px;
-  color:#F3EFDB;
-  margin: 20px 50px;
-}
-
-.tirant_de_pred{
-  font-family: 'Playfair Display', serif;
-  font-size:30px;
-  color:#F3EFDB;
-  margin: 20px 50px;
-}
-
-.type_de_prediction{
-  font-family: 'Playfair Display', serif;
-  font-size:40px;
-  color:#F3EFDB;
-  margin: 60px 50px;
+/* Style spécifique pour un élément avec l’id "map" */
+#map {
+  height: 600px;            /* Hauteur fixe */
+  width: 100%;              /* Largeur pleine */
+  margin: 20px 0;           /* Marge verticale */
+  border-radius: 12px;      /* Coins arrondis */
 }
