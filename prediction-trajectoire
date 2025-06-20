@@ -1,47 +1,57 @@
 <?php
-// prediction-trajectoire.php
+$host="localhost";
+$dbname="etu0418";
+$user="etu0418";
+$pass="hmwhholp";
 
-header('Content-Type: application/json');
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
+} catch (PDOException $e) {
+    http_response_code(500);
+    echo json_encode(['error' => 'Erreur de connexion à la base de données']);
+    exit;
+}
 
-// Lire les données JSON envoyées en POST
-$inputJSON = file_get_contents('php://input');
-$input = json_decode($inputJSON, true);
-
-// Vérifier que timeMinutes est fourni et valide
-if (!isset($input['timeMinutes']) || !is_int($input['timeMinutes']) || $input['timeMinutes'] <= 0) {
+if (!isset($_GET['mmsi'])) {
+    // Si le paramètre est absent, on retourne une erreur 400 (Bad Request)
     http_response_code(400);
-    echo json_encode(['error' => 'Paramètre timeMinutes invalide ou manquant.']);
+    echo json_encode(['error' => 'Paramètre MMSI manquant']);
+    exit; // Fin du script
+}
+
+$mmsi = $_GET['mmsi']; // Récupération du paramètre MMSI
+// Requête : récupère un bateau
+$sql = "SELECT LAT, LON FROM Position WHERE MMSI = :mmsi";
+$stmt = $pdo->prepare($sql);
+$stmt->execute(['mmsi'=> $mmsi]);
+$position = $stmt->fetch(PDO::FETCH_ASSOC);
+
+//Prépare les valeurs à envoyer au script Python 
+$lat=escapeshellarg($position['LAT']);
+$lon=escapeshellarg($position['LON']);
+//Chemin du script python
+$pythonScript=__DIR__.'/../trajectoire.py';
+
+$command="python3 $pythonScript $lat $lon  2>&1";
+exec($command, $outputLines, $returnCode);
+
+if ($returnCode !== 0) {
+    echo json_encode(['error' => 'Erreur lors de l\'exécution du script Python', 'details' => $outputLines]);
     exit;
 }
 
-$timeMinutes = $input['timeMinutes'];
+$output = implode("\n", $outputLines);
 
-// Nettoyer les données (sécurité)
-$timeMinutes = intval($timeMinutes);
+//convertir la sortie python en script PHP
+$prediction = json_decode($output, true);
 
-// Commande pour exécuter le script Python avec le temps en argument
-// Ajuste le chemin vers python3 et le script predict.py selon ton environnement
-$python = '/usr/bin/python3';
-$script = __DIR__ . '/predict.py'; // si le script est dans le même dossier
-
-// Exécuter la commande
-$cmd = escapeshellcmd("$python $script $timeMinutes");
-$output = shell_exec($cmd);
-
-if ($output === null) {
-    http_response_code(500);
-    echo json_encode(['error' => 'Erreur lors de l\'exécution du script Python.']);
+if ($prediction === null) {
+    echo json_encode(['error' => 'Erreur lors du décodage JSON', 'output' => $output]);
     exit;
 }
 
-// Essayer de décoder le JSON renvoyé par Python
-$result = json_decode($output, true);
-
-if ($result === null) {
-    http_response_code(500);
-    echo json_encode(['error' => 'Réponse JSON invalide du script Python.']);
-    exit;
-}
-
-// Tout est ok, renvoyer les données JSON
-echo json_encode($result);
+//Fusionner les résultats
+$resultat=array_merge($position,$prediction);
+// Retourne les données en JSON
+header('Content-Type: application/json');
+echo json_encode($resultat);
