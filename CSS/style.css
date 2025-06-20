@@ -112,14 +112,6 @@ footer a {
   overflow: auto;                      /* Gestion du débordement (scroll si nécessaire) */
 }
 
-/* Style pour un autre grand titre (ex: type de prédiction) */
-.pred-type {
-  font-family: 'Playfair Display', serif;
-  font-size: 50px;
-  color: #F3EFDB;
-  font-weight: bold;
-  max-width: 800px;
-}
 /* Conteneur principal du contenu pour ajouter un bateau */
 .add-boat-content {
     display: flex;              /* Affichage en ligne flexible */
@@ -310,7 +302,6 @@ td {
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
     max-width: 600px;
 }
-
 
 .pred-type {
     font-family: 'Playfair Display', serif;
