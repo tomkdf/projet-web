@@ -22,7 +22,7 @@ def main():
         )
         cursor = conn.cursor(dictionary=True)
 
-        # Récupère le dernier enregistrement pour un bateau (ajuste table et champ si nécessaire)
+        # Récupère le dernier enregistrement pour un bateau 
         cursor.execute("""
             SELECT * FROM trajectoire 
             ORDER BY date_heure DESC LIMIT 1
